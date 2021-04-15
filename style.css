@@ -1,7 +1,9 @@
 #virtualKeyboardChromeExtension {
 	padding: 15px !important;
-	background-color: #111317 !important;
-	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(black), to(#333)); !important;
+	background-color: rgba(204,204,204,0.5) !important;
+	
+	backdrop-filter: blur(6px);
+	
 	position: fixed !important;
 	bottom: -450px ;
 	opacity: 0;
@@ -11,7 +13,7 @@
 	-webkit-transition-duration: 0.4s;
 	-webkit-user-select: none;
 	z-index: 10000000;
-	-webkit-box-shadow: inset 0px 1px 1px rgba(255,255,255,0.2);
+
 	zoom: 1;
 }
 .ha #virtualKeyboardChromeExtension {
@@ -224,13 +226,12 @@
 	margin: 0 !important;
 }
 .virtualKeyboardChromeExtensionOverlay {
-	font-family: 'Segoe UI', Tahoma, Sans-Serif !important;
-	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(black), to(#333));
+	font-family: Sans-Serif !important;
+	background: transparent !important;
 	position: fixed;
 	z-index: 10000001;
 	padding: 5px !important;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #000;
+
 	-webkit-transition: opacity 0.4s, margin 0.2s;
 }
 .virtualKeyboardChromeExtensionOverlay[_state=closed] {
@@ -248,18 +249,25 @@
 .virtualKeyboardChromeExtensionOverlay li {
 	float: left;
 	margin: 1px 3px;
-	padding: 20px 20px;
+	padding: 32px 32px;
 	color: #fff;
 	cursor: pointer;
 	-webkit-transition: all 0.4s;
-	border-radius: 5px;
+
 	font-weight: bold;
-	font-size: 14px;
-	text-shadow: 0 0 3px #000;
-	background-color: rgba(255,255,255,0.05);
+	font-size: 32px;
+	text-shadow: 0 0 3px #000; 
+	
+	border-radius: 4px !important;	
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12) !important;
+	transition-duration: .28s;
+    transition-property: box-shadow,transform,opacity;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+	
+	background-color: #005caf;
 }
 .virtualKeyboardChromeExtensionOverlay li[mo=true]  {
-	background-color: rgba(255,255,255,0.3);
+	background-color: #cacaca;
 }
 #virtualKeyboardChromeExtensionUrlBar [type=submit] {
 	display: none !important;
@@ -284,16 +292,15 @@
 }
 #virtualKeyboardChromeExtension table td span{
 	color: #fff !important;
-	font-family: 'Segoe UI', Tahoma, Sans-Serif !important;
+	font-family: Sans-Serif !important;
 	font-size: 32px !important;
 	text-align: center !important;
 	cursor: pointer;
 	border: 0px !important;
-	overflow: hidden;
-	-webkit-transition-property: all;
-	-webkit-transition-duration: 0.3s;
+	/*overflow: hidden;*/
+
 	text-shadow: 0 0 10px rgba(0,0,0,0.4) !important;
-	border-radius: 6px !important;
+
 	position: absolute;
 	top: 0;
 	left: 3px;
@@ -304,8 +311,21 @@
 	padding-top: 31px !important;
 	background-position: center;
 	background-repeat: no-repeat;
+
+    background-color: #272727;
+
 	line-height: 14px !important;
+
+	border-radius: 4px !important;	
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12) !important;
+	transition-duration: .28s;
+    transition-property: box-shadow,transform,opacity;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+	white-space: nowrap;
+	
+	
 }
+
 #virtualKeyboardChromeExtension table td span.kShift {
 	background-image: url(/icons/shift.png);
 }
@@ -345,22 +365,22 @@
 	width: 20% !important;
 }
 #virtualKeyboardChromeExtension td.kbdHB span, #virtualKeyboardChromeExtension td.kbdHBS span, #virtualKeyboardChromeExtension td.kbdHBE span {
-	background-color: #525152 !important;
+	background-color: #005caf !important;
 }
 #virtualKeyboardChromeExtension table {
 	width: 100% !important;
 }
 #virtualKeyboardChromeExtension td.kbdH span {
-	background-color: #525152 !important;
+	background-color: #272727 !important;
 }
 #virtualKeyboardChromeExtension td.kbdS span {
-	background-color: #212421 !important;
+	background-color: #005caf !important
 } 
 #virtualKeyboardChromeExtension td.kbdS {
 	width: 60% !important;
 }
 #virtualKeyboardChromeExtension td.kbdD span, #virtualKeyboardChromeExtension td.kbdShift span {
-	background-color: #212021 !important;
+	background-color: #005caf !important;
 }		
 #virtualKeyboardChromeExtensionMainKbd.Shift td.kbdShift span {
 	background-color: #DDD !important;
@@ -373,7 +393,7 @@
 	font-size: 17px;
 }
 #virtualKeyboardChromeExtension td.kbdShift:active span, #virtualKeyboardChromeExtension td.kbdShift.active span {
-	background-color: #212021 !important;
+	background-color: #005caf !important;
 	color: #333 !important;
 }
 #virtualKeyboardChromeExtension td.kbdHBS:active span, #virtualKeyboardChromeExtension td.kbdHBS.active span {
