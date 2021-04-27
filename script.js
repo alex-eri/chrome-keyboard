@@ -163,6 +163,31 @@ function virtualKeyboardChromeExtension_click(key, skip) {
 				document.getElementById('virtualKeyboardChromeExtensionMainKbd').style.display = virtualKeyboardChromeExtensionFormat ? "none" : "";
 				document.getElementById('virtualKeyboardChromeExtensionMainNumbers').style.display = virtualKeyboardChromeExtensionFormat ? "" : "none";
 				break;
+				
+		  case 'layout':
+		    //GHGH
+		    
+		    console.log(virtualKeyboardChromeExtensionKeyboardLayout1Setting);
+		    
+		    chrome.extension.sendRequest({ method: "getLocalStorage", key: "keyboardLayoutsList" }, function (response) {
+						var data = JSON.parse(response.data);
+						var lang_i =  (data.findIndex((el) => el.value  == virtualKeyboardChromeExtensionKeyboardLayout1Setting) + 1) % data.length;
+						
+						console.log(data);
+						
+						
+												virtualKeyboardChromeExtensionRequestRefresh = true;
+												setting_set("keyboardLayout1", data[lang_i].value);
+												virtualKeyboardChromeExtensionKeyboardLayout1Setting = data[lang_i].value;
+												virtualKeyboardChromeClassStyleDisplay("kbEmailInput", "none");
+												if (virtualKeyboardChromeExtensionClickedElem) {
+													virtualKeyboardChromeExtension_open(undefined, undefined, true);
+													virtualKeyboardChromeExtensionClickedElem.focus();
+												}
+						});
+						
+		    
+				break;
 			case 'Close':
 				for( let dlg of dialogs ){
 				if (dlg.oldNoCancelOnOutsideClick)
